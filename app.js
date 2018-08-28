@@ -22,14 +22,19 @@ app.post('/callback', line.middleware(config), (req, res) => {
     });
 });
 
-function handleEvent(event) {
+const handleEvent = (event) => {
   if (event.type !== 'message' || event.message.type !== 'text') {
     return Promise.resolve(null);
   }
 
-  const echo = { type: 'text', text: event.message.text };
+  const echo = {type: 'text', text: event.message.text};
+  const penes = ['ちんちん', 'ちんこ', 'おちんちん', 'おちんぽ', 'チンチン', 'ペニス']
 
-  return client.replyMessage(event.replyToken, echo);
+  if (penes.some(
+    penis => echo.text.indexOf(penis)
+  ) {
+    return client.replyMessage('ちんちん');
+  }
 }
 
 const port = process.env.PORT || 3000;
